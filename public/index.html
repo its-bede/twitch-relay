@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitch Relay - Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Twitch Relay Admin Panel</h1>
+      <p class="subtitle">Verwalte Channels und Commands</p>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="channels">Channels</button>
+      <button class="tab" data-tab="commands">Commands</button>
+    </nav>
+
+    <!-- CHANNELS TAB -->
+    <div id="channels-tab" class="tab-content active">
+      <section class="section">
+        <h2>Channels</h2>
+
+        <div class="form-group">
+          <h3>Neuen Channel hinzufügen</h3>
+          <div class="form-inline">
+            <input type="text" id="new-channel-name" placeholder="Channel-Name (z.B. josymovies)" />
+            <button id="add-channel-btn" class="btn btn-primary">Hinzufügen</button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table id="channels-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Channel Name</th>
+                <th>Status</th>
+                <th>Erstellt</th>
+                <th>Aktionen</th>
+              </tr>
+            </thead>
+            <tbody id="channels-tbody">
+              <tr>
+                <td colspan="5" class="loading">Lädt...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- COMMANDS TAB -->
+    <div id="commands-tab" class="tab-content">
+      <section class="section">
+        <h2>Commands</h2>
+
+        <div class="form-group">
+          <label for="channel-select">Channel auswählen:</label>
+          <select id="channel-select">
+            <option value="">-- Channel wählen --</option>
+          </select>
+        </div>
+
+        <div id="commands-section" style="display: none;">
+          <div class="form-group">
+            <h3>Neuen Command hinzufügen</h3>
+            <div class="form-grid">
+              <input type="text" id="new-command-name" placeholder="Command-Name (z.B. hi)" />
+              <input type="text" id="new-command-response" placeholder="Response (z.B. Hallo Chat!)" />
+              <button id="add-command-btn" class="btn btn-primary">Hinzufügen</button>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table id="commands-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Response</th>
+                  <th>Status</th>
+                  <th>Aktionen</th>
+                </tr>
+              </thead>
+              <tbody id="commands-tbody">
+                <tr>
+                  <td colspan="5" class="loading">Wähle einen Channel aus</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Edit Channel Modal -->
+  <div id="edit-channel-modal" class="modal">
+    <div class="modal-content">
+      <h3>Channel bearbeiten</h3>
+      <input type="hidden" id="edit-channel-id" />
+      <div class="form-group">
+        <label>Channel Name:</label>
+        <input type="text" id="edit-channel-name" />
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="edit-channel-enabled" />
+          Aktiviert
+        </label>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="save-channel-btn">Speichern</button>
+        <button class="btn" id="cancel-channel-btn">Abbrechen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Command Modal -->
+  <div id="edit-command-modal" class="modal">
+    <div class="modal-content">
+      <h3>Command bearbeiten</h3>
+      <input type="hidden" id="edit-command-id" />
+      <div class="form-group">
+        <label>Name:</label>
+        <input type="text" id="edit-command-name" />
+      </div>
+      <div class="form-group">
+        <label>Response:</label>
+        <input type="text" id="edit-command-response" />
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="edit-command-enabled" />
+          Aktiviert
+        </label>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="save-command-btn">Speichern</button>
+        <button class="btn" id="cancel-command-btn">Abbrechen</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

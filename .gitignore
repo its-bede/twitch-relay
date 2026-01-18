@@ -3,3 +3,4 @@ node_modules
 config.js
 commands.json
 twitch-relay.bat
+twitch-relay.db
