@@ -14,7 +14,7 @@
     "fs": "0.0.1-security",
     "js-yaml": "^4.1.0",
     "log-timestamp": "^0.3.0",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "tmi.js": "^1.8.3"
   }
 }
